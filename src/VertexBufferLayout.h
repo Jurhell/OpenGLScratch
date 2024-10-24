@@ -18,8 +18,8 @@ struct VertexBufferElement
 		case GL_UNSIGNED_INT:  return 4;
 		case GL_UNSIGNED_BYTE: return 1;
 		}
-		//std::runtime_error(false, "Unsupported type");
-		__debugbreak();
+		std::runtime_error;
+		//__debugbreak();
 		return 0;
 	}
 };
