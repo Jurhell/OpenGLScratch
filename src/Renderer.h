@@ -1,5 +1,8 @@
 #pragma once
 #include <GL/glew.h>
+class VertexArray;
+class IndexBuffer;
+class Shader;
 
 #pragma region ChernoErrorCall
     //Macros for Cherno's error call
@@ -23,3 +26,10 @@ ASSERT(GLLogCall(#x, __FILE__, __LINE__))
         const void* userParam);
 
     void GLFWErrorCallback(int error, const char* description);
+
+    class Renderer 
+    {
+    public:
+        void clear();
+        void draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const;
+    };

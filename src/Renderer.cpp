@@ -1,4 +1,7 @@
 #include "Renderer.h"
+#include "VertexArray.h"
+#include "IndexBuffer.h"
+#include "Shader.h"
 #include <iostream>
 
 void GLDebugCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
@@ -47,4 +50,17 @@ bool GLLogCall(const char* function, const char* file, int line)
         return false;
     }
     return true;
+}
+
+void Renderer::clear()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void Renderer::draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader) const
+{
+    shader.bind();
+    va.bind();
+    ib.bind();
+    glDrawElements(GL_TRIANGLES, ib.getCount(), GL_UNSIGNED_INT, nullptr);
 }
