@@ -65,24 +65,30 @@ int main(void)
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+        //Creating vertex array object
         VertexArray va;
         VertexBuffer vb(positions, 4 * 4 * sizeof(float));
 
+        //Creating vertex buffer layout
         VertexBufferLayout layout;
         layout.push<float>(2);
         layout.push<float>(2);
         va.addBuffer(vb, layout);
 
+        //Creating index buffer
         IndexBuffer ib(indices, 6);
 
+        //Creating shader
         Shader shader("res/shaders/Basic.shader");
         shader.bind();
         shader.setUniform4f("u_color", 0.8f, 0.3f, 0.8f, 1.0f);
 
+        //Creating texture
         Texture texture("res/textures/upsideDownSanic.png");
         texture.bind();
         shader.setUniform1i("u_texture", 0);
 
+        //Unbinding 
         va.unBind();
         vb.unbind();
         ib.unbind();
