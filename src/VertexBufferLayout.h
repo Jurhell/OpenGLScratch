@@ -32,6 +32,7 @@ private:
 public:
 	VertexBufferLayout() : m_stride(0) {}
 
+	//Template push functions for different VBE types
 	template<typename T>
 	void push(unsigned int count)
 	{
@@ -43,7 +44,7 @@ public:
 	{
 		m_elements.push_back({GL_FLOAT, count, GL_FALSE});
 		m_stride += VertexBufferElement::getTypeSize(GL_FLOAT) * count;
-	}
+	}	
 
 	template<>
 	void push<unsigned int>(unsigned int count)
@@ -59,6 +60,7 @@ public:
 		m_stride += VertexBufferElement::getTypeSize(GL_UNSIGNED_BYTE) * count;
 	}
 
+	//Getters
 	inline const std::vector<VertexBufferElement>& getElements() const { return m_elements; }
 	inline unsigned int getStride() const { return m_stride; }
 };

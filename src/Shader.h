@@ -11,6 +11,7 @@ struct ShaderProgramSource
 class Shader
 {
 private: 
+	//Declarations
 	std::string m_filePath;
 	unsigned int m_rendererID;
 	std::unordered_map<std::string, int> m_uniformLocationCache;
@@ -18,6 +19,7 @@ public:
 	Shader(const std::string& filepath);
 	~Shader();
 
+	//Binding and Unbinding
 	void bind() const;
 	void unBind() const;
 
